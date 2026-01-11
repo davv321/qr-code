@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Code Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="app">
+  <header class="app-header">
+    <h1>QR Code Generator</h1>
+
+    <label class="switch">
+      <input type="checkbox" onchange="toggleDark()">
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <section class="card">
+    <label>Text / URL</label>
+    <input type="text" id="qrText" placeholder="https://example.com">
+
+    <label>Ukuran QR</label>
+    <input type="range" id="qrSize" min="160" max="320" value="240">
+
+    <label>Warna QR</label>
+    <div class="color-presets">
+      <button style="--c:#0f172a" onclick="setColor('#0f172a')"></button>
+      <button style="--c:#2563eb" onclick="setColor('#2563eb')"></button>
+      <button style="--c:#16a34a" onclick="setColor('#16a34a')"></button>
+      <button style="--c:#dc2626" onclick="setColor('#dc2626')"></button>
+      <button style="--c:#9333ea" onclick="setColor('#9333ea')"></button>
+    </div>
+
+    <label>Logo (opsional)</label>
+    <input type="file" id="logoInput" accept="image/*">
+
+    <button class="primary-btn" onclick="generateQR()">Generate QR</button>
+  </section>
+
+  <section class="preview">
+    <div class="qr-box">
+      <div id="qrResult"></div>
+      <img id="logoPreview">
+    </div>
+
+    <a id="downloadBtn" download="qrcode.png" class="download-btn">
+      Download QR
+    </a>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
